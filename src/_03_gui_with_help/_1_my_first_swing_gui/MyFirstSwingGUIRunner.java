@@ -7,5 +7,6 @@ package _03_gui_with_help._1_my_first_swing_gui;
 public class MyFirstSwingGUIRunner {
 	public static void main(String[] args) {
 		new MyFirstSwingGUI().run();
+		
 	}
 }
