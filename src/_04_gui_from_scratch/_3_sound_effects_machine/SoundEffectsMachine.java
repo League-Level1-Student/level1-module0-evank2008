@@ -11,9 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class SoundEffectsMachine {
+public class SoundEffectsMachine implements ActionListener {
 JButton sawButton;
 JButton spyButton;
+
 	public void showButton() {
 		JPanel panel = new JPanel();
         JFrame frame = new JFrame();
@@ -21,13 +22,13 @@ JButton spyButton;
         frame.add(panel);
         sawButton = new JButton();
         sawButton.setText("sawing wood");
-        sawButton.addActionListener((ActionListener) this);
+        sawButton.addActionListener(this);
         panel.add(sawButton);
         spyButton = new JButton();
         spyButton.setText("spy sound");
-        spyButton.addActionListener((ActionListener) this);
+        spyButton.addActionListener(this);
         panel.add(spyButton);
-        panel.setVisible(true);
+        
         frame.pack();
    }
 public void actionPerformed(ActionEvent arg0) {
@@ -36,10 +37,13 @@ public void actionPerformed(ActionEvent arg0) {
 		if(buttonPressed==sawButton) {
 			playSound("sawing-wood-daniel_simon.wav");
 		}
+		if(buttonPressed==spyButton) {
+			playSound("Spy_uncloak_feigndeath.wav");
+		}
 		
 	}
 	private void playSound(String soundFile) {
-		String path = "src/_03_gui_from_scratch/_3_sound_effects_machine/";
+		String path = "src/_04_gui_from_scratch/_3_sound_effects_machine/";
 			File sound = new File(path+soundFile);
 			if (sound.exists()) {
 				new Thread(() -> {
